@@ -5,3 +5,8 @@ flask
 transformers
 torch
 sentence-transformers
+
+fastapi
+uvicorn
+mysql-connector-python
+python-dotenv

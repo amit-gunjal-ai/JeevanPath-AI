@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeevanPath AI - Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e9f8ef, #f7fcf9);
+            padding: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 18px 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 80, 40, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0b6b3a;
+        }
+
+        .logo span { color: #15945a; }
+
+        .logout-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #08763f;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .welcome-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 80, 40, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .welcome-card h1 {
+            font-size: 26px;
+            color: #163b27;
+            margin-bottom: 8px;
+        }
+
+        .welcome-card p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 80, 40, 0.08);
+        }
+
+        .card h3 {
+            color: #08763f;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="logo">🌱 JeevanPath <span>AI</span></div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="welcome-card">
+        <h1 id="welcomeText">Welcome 👋</h1>
+        <p>Continue your livelihood journey — explore skills and opportunities suited for you.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>🎤 Voice Assistant</h3>
+            <p>Talk to the assistant to map your skills and interests. Coming soon.</p>
+        </div>
+        <div class="card">
+            <h3>🧠 Skill Assessment</h3>
+            <p>Get an AI-powered view of your current skills. Coming soon.</p>
+        </div>
+        <div class="card">
+            <h3>🎯 Recommendations</h3>
+            <p>Personalized NSQF-aligned training suggestions. Coming soon.</p>
+        </div>
+        <div class="card">
+            <h3>🛣️ Your Roadmap</h3>
+            <p>A step-by-step livelihood plan based on your profile. Coming soon.</p>
+        </div>
+    </div>
+
+    <script>
+        // Show the logged-in user's name
+        const userName = sessionStorage.getItem("userName");
+        if (userName) {
+            document.getElementById("welcomeText").innerText = "Welcome, " + userName + " 👋";
+        }
+
+        function logout() {
+            sessionStorage.removeItem("userName");
+            window.location.href = "../login.html";
+        }
+    </script>
+
+</body>
+</html>

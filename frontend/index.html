@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>JeevanPath AI - Login</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -26,8 +23,6 @@
             padding: 25px;
         }
 
-        /* Main Container */
-
         .container {
             width: 100%;
             max-width: 1050px;
@@ -38,8 +33,6 @@
             display: flex;
             box-shadow: 0 15px 45px rgba(0, 80, 40, 0.15);
         }
-
-        /* Left Section */
 
         .left-section {
             width: 50%;
@@ -60,9 +53,7 @@
             font-weight: 700;
         }
 
-        .logo span {
-            color: #b8f5ce;
-        }
+        .logo span { color: #b8f5ce; }
 
         .left-section h1 {
             font-size: 42px;
@@ -70,9 +61,7 @@
             margin-bottom: 20px;
         }
 
-        .left-section h1 span {
-            color: #c5f7d6;
-        }
+        .left-section h1 span { color: #c5f7d6; }
 
         .left-section p {
             font-size: 17px;
@@ -81,11 +70,7 @@
             max-width: 430px;
         }
 
-        /* Feature */
-
-        .features {
-            margin-top: 35px;
-        }
+        .features { margin-top: 35px; }
 
         .feature {
             display: flex;
@@ -105,11 +90,7 @@
             font-size: 21px;
         }
 
-        .feature span {
-            font-size: 15px;
-        }
-
-        /* Right Section */
+        .feature span { font-size: 15px; }
 
         .right-section {
             width: 50%;
@@ -119,22 +100,9 @@
             justify-content: center;
         }
 
-        .welcome {
-            margin-bottom: 25px;
-        }
-
-        .welcome h2 {
-            font-size: 30px;
-            color: #163b27;
-            margin-bottom: 8px;
-        }
-
-        .welcome p {
-            color: #777;
-            font-size: 14px;
-        }
-
-        /* Tabs */
+        .welcome { margin-bottom: 25px; }
+        .welcome h2 { font-size: 30px; color: #163b27; margin-bottom: 8px; }
+        .welcome p { color: #777; font-size: 14px; }
 
         .tabs {
             display: flex;
@@ -162,11 +130,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        /* Form */
-
-        .form-group {
-            margin-bottom: 17px;
-        }
+        .form-group { margin-bottom: 17px; }
 
         .form-group label {
             display: block;
@@ -176,9 +140,7 @@
             color: #34483b;
         }
 
-        .input-box {
-            position: relative;
-        }
+        .input-box { position: relative; }
 
         .input-box input,
         .input-box select {
@@ -198,8 +160,6 @@
             box-shadow: 0 0 0 3px rgba(21,148,90,0.1);
         }
 
-        /* Password Eye */
-
         .eye {
             position: absolute;
             right: 14px;
@@ -208,8 +168,6 @@
             cursor: pointer;
             color: #777;
         }
-
-        /* Forgot */
 
         .forgot {
             text-align: right;
@@ -222,8 +180,6 @@
             color: #12834c;
             font-size: 13px;
         }
-
-        /* Button */
 
         .submit-btn {
             width: 100%;
@@ -243,8 +199,6 @@
             box-shadow: 0 7px 18px rgba(8,118,63,0.25);
         }
 
-        /* Voice */
-
         .voice-text {
             text-align: center;
             margin-top: 22px;
@@ -252,18 +206,9 @@
             font-size: 13px;
         }
 
-        .voice-text span {
-            color: #08763f;
-            font-weight: 600;
-        }
+        .voice-text span { color: #08763f; font-weight: 600; }
 
-        /* Hide Register */
-
-        #registerForm {
-            display: none;
-        }
-
-        /* Terms */
+        #registerForm { display: none; }
 
         .terms {
             font-size: 12px;
@@ -272,90 +217,36 @@
             line-height: 1.5;
         }
 
-        .terms a {
-            color: #08763f;
-            text-decoration: none;
-        }
-
-        /* Responsive */
+        .terms a { color: #08763f; text-decoration: none; }
 
         @media (max-width: 850px) {
-
-            .container {
-                flex-direction: column;
-            }
-
-            .left-section,
-            .right-section {
-                width: 100%;
-            }
-
-            .left-section {
-                padding: 45px 35px;
-            }
-
-            .left-section h1 {
-                font-size: 34px;
-            }
-
-            .right-section {
-                padding: 40px 35px;
-            }
-
-            .logo {
-                position: static;
-                margin-bottom: 30px;
-            }
+            .container { flex-direction: column; }
+            .left-section, .right-section { width: 100%; }
+            .left-section { padding: 45px 35px; }
+            .left-section h1 { font-size: 34px; }
+            .right-section { padding: 40px 35px; }
+            .logo { position: static; margin-bottom: 30px; }
         }
 
         @media (max-width: 500px) {
-
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                border-radius: 18px;
-            }
-
-            .left-section {
-                padding: 35px 25px;
-            }
-
-            .left-section p {
-                font-size: 15px;
-            }
-
-            .features {
-                margin-top: 20px;
-            }
-
-            .right-section {
-                padding: 35px 25px;
-            }
+            body { padding: 10px; }
+            .container { border-radius: 18px; }
+            .left-section { padding: 35px 25px; }
+            .left-section p { font-size: 15px; }
+            .features { margin-top: 20px; }
+            .right-section { padding: 35px 25px; }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
 <div class="container">
 
-    <!-- LEFT SIDE -->
-
     <div class="left-section">
+        <div class="logo">🌱 JeevanPath <span>AI</span></div>
 
-        <div class="logo">
-            🌱 JeevanPath <span>AI</span>
-        </div>
-
-        <h1>
-            Find Your Path.<br>
-            <span>Build Your Future.</span>
-        </h1>
+        <h1>Find Your Path.<br><span>Build Your Future.</span></h1>
 
         <p>
             Your AI-powered livelihood assistant that helps
@@ -364,191 +255,136 @@
         </p>
 
         <div class="features">
-
             <div class="feature">
                 <div class="feature-icon">🎤</div>
                 <span>Voice-first and easy to use</span>
             </div>
-
             <div class="feature">
                 <div class="feature-icon">🧠</div>
                 <span>AI-powered skill assessment</span>
             </div>
-
             <div class="feature">
                 <div class="feature-icon">🎯</div>
                 <span>Personalized training recommendations</span>
             </div>
-
             <div class="feature">
                 <div class="feature-icon">🛣️</div>
                 <span>Personalized livelihood roadmap</span>
             </div>
-
         </div>
-
     </div>
-
-
-    <!-- RIGHT SIDE -->
 
     <div class="right-section">
 
         <div class="welcome">
-
             <h2 id="formTitle">Welcome Back 👋</h2>
-
-            <p id="formSubtitle">
-                Login to continue your livelihood journey
-            </p>
-
+            <p id="formSubtitle">Login to continue your livelihood journey</p>
         </div>
-
-
-        <!-- TABS -->
 
         <div class="tabs">
-
-            <button
-                class="tab active"
-                id="loginTab"
-                onclick="showLogin()">
-
-                Login
-
-            </button>
-
-            <button
-                class="tab"
-                id="registerTab"
-                onclick="showRegister()">
-
-                Create Account
-
-            </button>
-
+            <button class="tab active" id="loginTab" onclick="showLogin()">Login</button>
+            <button class="tab" id="registerTab" onclick="showRegister()">Create Account</button>
         </div>
-
-
-        <!-- LOGIN FORM -->
 
         <form id="loginForm">
 
             <div class="form-group">
-
                 <label>Mobile Number</label>
-
                 <div class="input-box">
-
-                    <input
-                        type="tel"
-                        placeholder="Enter your mobile number"
-                        maxlength="10"
-                        required>
-
+                    <input type="tel" id="mobileNumber" placeholder="Enter your mobile number" maxlength="10" required>
                 </div>
-
             </div>
-
 
             <div class="form-group">
-
                 <label>Password</label>
-
                 <div class="input-box">
-
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Enter your password"
-                        required>
-
-                    <span
-                        class="eye"
-                        onclick="togglePassword('loginPassword')">
-
-                        👁
-
-                    </span>
-
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <span class="eye" onclick="togglePassword('loginPassword')">👁</span>
                 </div>
-
             </div>
 
+            <div class="forgot"><a href="#">Forgot Password?</a></div>
 
-            <div class="forgot">
+            <button class="submit-btn" type="submit">Login →</button>
 
-                <a href="#">
-                    Forgot Password?
-                </a>
-
-            </div>
-
-
-            <button class="submit-btn" type="submit">
-
-                Login →
-
-            </button>
-
-
-            <div class="voice-text">
-
-                🎤 <span>Voice assistance available</span>
-
-            </div>
+            <div class="voice-text">🎤 <span>Voice assistance available</span></div>
 
         </form>
-
-
-
-        <!-- REGISTER FORM -->
 
         <form id="registerForm">
 
             <div class="form-group">
-
                 <label>Full Name</label>
-
                 <div class="input-box">
-
-                    <input
-                        type="text"
-                        placeholder="Enter your full name"
-                        required>
-
+                    <input type="text" id="regFullName" placeholder="Enter your full name" required>
                 </div>
-
             </div>
 
-
             <div class="form-group">
-
                 <label>Mobile Number</label>
-
                 <div class="input-box">
-
-                    <input
-                        type="tel"
-                        placeholder="Enter 10-digit mobile number"
-                        maxlength="10"
-                        required>
-
+                    <input type="tel" id="regMobileNumber" placeholder="Enter 10-digit mobile number" maxlength="10" required>
                 </div>
-
             </div>
 
+            <div class="form-group">
+                <label>Preferred Language</label>
+                <div class="input-box">
+                    <select id="regLanguage" required>
+                        <option value="">Select language</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Marathi">Marathi</option>
+                        <option value="English">English</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="form-group">
-
-                <label>Preferred Language</label>
-
+                <label>Password</label>
                 <div class="input-box">
+                    <input type="password" id="regPassword" placeholder="Create a password" required>
+                    <span class="eye" onclick="togglePassword('regPassword')">👁</span>
+                </div>
+            </div>
 
-                    <select required>
+            <button class="submit-btn" type="submit">Create Account →</button>
 
-                        <option value="">
-                            Select language
-                        </option>
+            <div class="terms">
+                By creating an account, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+            </div>
 
-                        <option>
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+    function showLogin() {
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("loginTab").classList.add("active");
+        document.getElementById("registerTab").classList.remove("active");
+        document.getElementById("formTitle").innerText = "Welcome Back 👋";
+        document.getElementById("formSubtitle").innerText = "Login to continue your livelihood journey";
+    }
+
+    function showRegister() {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "block";
+        document.getElementById("registerTab").classList.add("active");
+        document.getElementById("loginTab").classList.remove("active");
+        document.getElementById("formTitle").innerText = "Create Account 🌱";
+        document.getElementById("formSubtitle").innerText = "Start your livelihood journey today";
+    }
+
+    function togglePassword(fieldId) {
+        const field = document.getElementById(fieldId);
+        field.type = field.type === "password" ? "text" : "password";
+    }
+</script>
+
+<script src="js/api.js"></script>
+
+</body>
+</html>
