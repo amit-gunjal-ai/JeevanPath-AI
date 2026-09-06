@@ -1,16 +1,16 @@
 import sys
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
 import bcrypt
-from fastapi import UploadFile, File
-from speech_to_text import transcribe_marathi_audio
-from database import get_connection
 
-# --- make the recommendation/ pipeline importable from here ---
+from database import get_connection
+from speech_to_text import transcribe_marathi_audio  # rename to transcribe_hindi_audio if you already renamed it in speech_to_text.py
+
+# --- make the recommendation/ pipeline importable BEFORE anything imports from it ---
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "recommendation"))
@@ -19,6 +19,7 @@ from profile_extractor import extract_profile
 from hybrid_recommender import recommend
 from roadmap_generator import generate_roadmap
 from data_loader import load_pathways
+from text_translator import translate_to_english
 
 app = FastAPI(title="SIH PS#97 Livelihood Navigator API")
 
@@ -33,7 +34,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ============ AUTH ROUTES (Prathmesh) ============
+
+# ============ REQUEST MODELS (must be defined before any route uses them) ============
 
 class SignupData(BaseModel):
     full_name: str
@@ -46,6 +48,22 @@ class LoginData(BaseModel):
     mobile_number: str
     password: str
 
+
+class ConversationInput(BaseModel):
+    transcript: str
+
+
+class ProfileInput(BaseModel):
+    education_level: Optional[int] = None
+    age: Optional[int] = None
+    occupation: Optional[str] = None
+    skills: List[str] = []
+    interests: List[str] = []
+    employment_preference: Optional[str] = None
+    mobility: Optional[str] = None
+
+
+# ============ AUTH ROUTES (Prathmesh) ============
 
 @app.get("/")
 def home():
@@ -79,17 +97,6 @@ def signup(data: SignupData):
     conn.close()
     return {"message": "User created successfully"}
 
-@app.post("/recommend-from-voice")
-async def recommend_from_voice(audio: UploadFile = File(...)):
-    audio_bytes = await audio.read()
-    stt_result = transcribe_marathi_audio(audio_bytes, audio.filename)
-
-    profile = extract_profile(stt_result["english_text"])
-    results = recommend(profile, top_n=5)
-    response = format_results(profile, results)
-
-    response["translated_text"] = stt_result["english_text"]
-    return response
 
 @app.post("/login")
 def login(data: LoginData):
@@ -112,20 +119,6 @@ def login(data: LoginData):
 
 
 # ============ ML RECOMMENDATION ROUTES (Amit) ============
-
-class ConversationInput(BaseModel):
-    transcript: str
-
-
-class ProfileInput(BaseModel):
-    education_level: Optional[int] = None
-    age: Optional[int] = None
-    occupation: Optional[str] = None
-    skills: List[str] = []
-    interests: List[str] = []
-    employment_preference: Optional[str] = None
-    mobility: Optional[str] = None
-
 
 def format_results(profile, results):
     recommendations = [
@@ -159,14 +152,18 @@ def health():
 
 @app.post("/extract-profile")
 def extract(input: ConversationInput):
-    return extract_profile(input.transcript)
+    english_text = translate_to_english(input.transcript)
+    return extract_profile(english_text)
 
 
 @app.post("/recommend-from-transcript")
 def recommend_from_transcript(input: ConversationInput):
-    profile = extract_profile(input.transcript)
+    english_text = translate_to_english(input.transcript)
+    profile = extract_profile(english_text)
     results = recommend(profile, top_n=5)
-    return format_results(profile, results)
+    response = format_results(profile, results)
+    response["translated_text"] = english_text
+    return response
 
 
 @app.post("/recommend-from-profile")
@@ -174,3 +171,15 @@ def recommend_from_profile(input: ProfileInput):
     profile = input.dict()
     results = recommend(profile, top_n=5)
     return format_results(profile, results)
+
+
+@app.post("/recommend-from-voice")
+async def recommend_from_voice(audio: UploadFile = File(...)):
+    audio_bytes = await audio.read()
+    stt_result = transcribe_marathi_audio(audio_bytes, audio.filename)
+
+    profile = extract_profile(stt_result["english_text"])
+    results = recommend(profile, top_n=5)
+    response = format_results(profile, results)
+    response["translated_text"] = stt_result["english_text"]
+    return response

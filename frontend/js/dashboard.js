@@ -58,7 +58,13 @@ document.getElementById("profileForm").addEventListener("submit", async function
     try {
         const data = await getRecommendations(transcript);
 
-        document.getElementById("profileSummary").innerHTML = renderProfile(data.profile);
+        if (data.translated_text) {
+            document.getElementById("profileSummary").innerHTML =
+                `<p style="color:#08763f;"><em>Understood as: ${data.translated_text}</em></p>` +
+                renderProfile(data.profile);
+        } else {
+            document.getElementById("profileSummary").innerHTML = renderProfile(data.profile);
+        }
         document.getElementById("recommendationsList").innerHTML = renderRecommendations(data.recommendations);
         document.getElementById("roadmapSection").innerHTML = renderRoadmap(data.roadmap_for_top_pick);
 
