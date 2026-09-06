@@ -30,6 +30,33 @@
             margin-bottom: 30px;
         }
 
+                .rec-card {
+            border-left: 4px solid #15945a;
+            padding: 12px 16px;
+            margin-bottom: 14px;
+            background: #f7fcf9;
+            border-radius: 8px;
+        }
+        .rec-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rec-header h4 { color: #163b27; }
+        .rec-score {
+            background: #08763f;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .rec-category { color: #999; font-size: 12px; margin: 4px 0 8px; }
+        .rec-explanation { font-size: 13px; color: #444; line-height: 1.5; }
+        .rec-missing { font-size: 13px; margin-top: 8px; color: #a15c00; }
+        .roadmap-list { padding-left: 20px; }
+        .roadmap-list li { margin-bottom: 12px; line-height: 1.5; color: #444; }
+
         .logo {
             font-size: 20px;
             font-weight: 700;
@@ -101,9 +128,29 @@
         <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
 
-    <div class="welcome-card">
-        <h1 id="welcomeText">Welcome 👋</h1>
-        <p>Continue your livelihood journey — explore skills and opportunities suited for you.</p>
+        <div class="welcome-card">
+        <h3>Tell us about yourself</h3>
+        <p style="margin-bottom: 15px;">Describe your education, skills, interests, and what kind of work you're looking for.</p>
+        <form id="profileForm">
+            <textarea id="transcriptInput" rows="5" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; font-family: inherit; font-size: 14px;"
+                placeholder="e.g. I studied up to 10th class. I help my family with farming and know how to repair tractors. I want to start my own business and cannot travel far."></textarea>
+            <button type="submit" class="logout-btn" style="margin-top: 12px; background: #15945a;">Get Recommendations</button>
+        </form>
+        <p id="statusText" style="margin-top: 10px; color: #08763f;"></p>
+    </div>
+
+    <div id="resultsSection" style="display: none;">
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>Your Profile</h3>
+            <div id="profileSummary"></div>
+        </div>
+
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>Recommended Pathways</h3>
+            <div id="recommendationsList"></div>
+        </div>
+
+        <div class="card" id="roadmapSection"></div>
     </div>
 
     <div class="grid">
@@ -137,6 +184,6 @@
             window.location.href = "../login.html";
         }
     </script>
-
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>
