@@ -6,7 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
 import bcrypt
-
+from fastapi import UploadFile, File
+from speech_to_text import transcribe_marathi_audio
 from database import get_connection
 
 # --- make the recommendation/ pipeline importable from here ---
@@ -78,6 +79,17 @@ def signup(data: SignupData):
     conn.close()
     return {"message": "User created successfully"}
 
+@app.post("/recommend-from-voice")
+async def recommend_from_voice(audio: UploadFile = File(...)):
+    audio_bytes = await audio.read()
+    stt_result = transcribe_marathi_audio(audio_bytes, audio.filename)
+
+    profile = extract_profile(stt_result["english_text"])
+    results = recommend(profile, top_n=5)
+    response = format_results(profile, results)
+
+    response["translated_text"] = stt_result["english_text"]
+    return response
 
 @app.post("/login")
 def login(data: LoginData):
