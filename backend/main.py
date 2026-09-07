@@ -6,7 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
 import bcrypt
-
 from database import get_connection
 from speech_to_text import transcribe_marathi_audio  # rename to transcribe_hindi_audio if you already renamed it in speech_to_text.py
 
@@ -20,6 +19,7 @@ from hybrid_recommender import recommend
 from roadmap_generator import generate_roadmap
 from data_loader import load_pathways
 from text_translator import translate_to_english
+from llm_profile_extractor import extract_profile_llm
 
 app = FastAPI(title="SIH PS#97 Livelihood Navigator API")
 
@@ -153,13 +153,13 @@ def health():
 @app.post("/extract-profile")
 def extract(input: ConversationInput):
     english_text = translate_to_english(input.transcript)
-    return extract_profile(english_text)
+    return extract_profile_llm(english_text)
 
 
 @app.post("/recommend-from-transcript")
 def recommend_from_transcript(input: ConversationInput):
     english_text = translate_to_english(input.transcript)
-    profile = extract_profile(english_text)
+    profile = extract_profile_llm(english_text)
     results = recommend(profile, top_n=5)
     response = format_results(profile, results)
     response["translated_text"] = english_text
@@ -177,7 +177,7 @@ def recommend_from_profile(input: ProfileInput):
 async def recommend_from_voice(audio: UploadFile = File(...)):
     audio_bytes = await audio.read()
     stt_result = transcribe_marathi_audio(audio_bytes, audio.filename)
-
+    profile = extract_profile_llm(stt_result["english_text"])
     profile = extract_profile(stt_result["english_text"])
     results = recommend(profile, top_n=5)
     response = format_results(profile, results)

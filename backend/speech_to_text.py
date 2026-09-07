@@ -10,7 +10,7 @@ def get_whisper_model():
     if _model is None:
         # "small" balances accuracy/speed for Marathi on CPU.
         # Use "base" instead if this is too slow on the demo machine.
-        _model = whisper.load_model("small")
+        _model = whisper.load_model("medium")
     return _model
 
 
