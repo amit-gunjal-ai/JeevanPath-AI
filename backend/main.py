@@ -102,7 +102,7 @@ def signup(data: SignupData):
 def login(data: LoginData):
     conn = get_connection()
     cursor = conn.cursor()
-    query = "SELECT * FROM users WHERE mobile_number = %s"
+    query = "SELECT full_name, password_hash, preferred_language FROM users WHERE mobile_number = %s"
     cursor.execute(query, (data.mobile_number,))
     user = cursor.fetchone()
     cursor.close()
@@ -111,12 +111,16 @@ def login(data: LoginData):
     if user is None:
         return {"error": "User not found"}
 
-    stored_hash = user[3].encode("utf-8")
-    if not bcrypt.checkpw(data.password.encode("utf-8"), stored_hash):
+    full_name, password_hash, preferred_language = user
+
+    if not bcrypt.checkpw(data.password.encode("utf-8"), password_hash.encode("utf-8")):
         return {"error": "Incorrect password"}
 
-    return {"message": "Login successful", "full_name": user[1]}
-
+    return {
+        "message": "Login successful",
+        "full_name": full_name,
+        "preferred_language": preferred_language or "English",
+    }
 
 # ============ ML RECOMMENDATION ROUTES (Amit) ============
 
