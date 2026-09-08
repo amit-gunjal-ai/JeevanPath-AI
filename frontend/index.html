@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JeevanPath AI - Login</title>
+
+    <title>JeevanPath AI</title>
+
+    <link rel="stylesheet" href="style.css">
 
     <style>
         * {
@@ -34,6 +37,8 @@
             box-shadow: 0 15px 45px rgba(0, 80, 40, 0.15);
         }
 
+        /* LEFT SIDE */
+
         .left-section {
             width: 50%;
             background: linear-gradient(145deg, #0b6b3a, #15945a);
@@ -53,7 +58,9 @@
             font-weight: 700;
         }
 
-        .logo span { color: #b8f5ce; }
+        .logo span {
+            color: #b8f5ce;
+        }
 
         .left-section h1 {
             font-size: 42px;
@@ -61,7 +68,9 @@
             margin-bottom: 20px;
         }
 
-        .left-section h1 span { color: #c5f7d6; }
+        .left-section h1 span {
+            color: #c5f7d6;
+        }
 
         .left-section p {
             font-size: 17px;
@@ -70,7 +79,9 @@
             max-width: 430px;
         }
 
-        .features { margin-top: 35px; }
+        .features {
+            margin-top: 35px;
+        }
 
         .feature {
             display: flex;
@@ -83,14 +94,18 @@
             width: 42px;
             height: 42px;
             border-radius: 12px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 21px;
         }
 
-        .feature span { font-size: 15px; }
+        .feature span {
+            font-size: 15px;
+        }
+
+        /* RIGHT SIDE */
 
         .right-section {
             width: 50%;
@@ -100,9 +115,22 @@
             justify-content: center;
         }
 
-        .welcome { margin-bottom: 25px; }
-        .welcome h2 { font-size: 30px; color: #163b27; margin-bottom: 8px; }
-        .welcome p { color: #777; font-size: 14px; }
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 30px;
+            color: #163b27;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* TABS */
 
         .tabs {
             display: flex;
@@ -113,278 +141,574 @@
         }
 
         .tab {
-            width: 50%;
+            flex: 1;
             padding: 12px;
             border: none;
             background: transparent;
             border-radius: 9px;
             cursor: pointer;
-            font-size: 15px;
-            color: #666;
+            font-size: 14px;
+            color: #777;
+            transition: 0.2s;
         }
 
         .tab.active {
             background: white;
             color: #08763f;
             font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 80, 40, 0.08);
         }
 
-        .form-group { margin-bottom: 17px; }
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
 
         .form-group label {
             display: block;
             margin-bottom: 7px;
-            font-size: 14px;
+            color: #333;
+            font-size: 13px;
             font-weight: 600;
-            color: #34483b;
         }
 
-        .input-box { position: relative; }
+        .input-box {
+            position: relative;
+        }
 
         .input-box input,
         .input-box select {
             width: 100%;
-            padding: 14px 15px;
-            border: 1px solid #d9e4dc;
-            border-radius: 10px;
+            padding: 13px 15px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
             outline: none;
             font-size: 14px;
-            background: #fbfdfb;
-            transition: 0.3s;
+            background: white;
+            transition: 0.2s;
         }
 
         .input-box input:focus,
         .input-box select:focus {
             border-color: #15945a;
-            box-shadow: 0 0 0 3px rgba(21,148,90,0.1);
+            box-shadow: 0 0 0 3px rgba(21, 148, 90, 0.08);
         }
 
         .eye {
             position: absolute;
-            right: 14px;
+            right: 13px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            color: #777;
+            font-size: 16px;
         }
 
         .forgot {
             text-align: right;
-            margin-top: -7px;
             margin-bottom: 20px;
         }
 
         .forgot a {
+            color: #08763f;
             text-decoration: none;
-            color: #12834c;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 15px;
+            padding: 13px;
             border: none;
-            border-radius: 11px;
-            background: linear-gradient(135deg, #08763f, #15945a);
+            border-radius: 9px;
+            background: #08763f;
             color: white;
-            font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 18px rgba(8,118,63,0.25);
+            background: #065e32;
         }
 
         .voice-text {
             text-align: center;
-            margin-top: 22px;
+            margin-top: 18px;
             color: #777;
-            font-size: 13px;
+            font-size: 12px;
         }
 
-        .voice-text span { color: #08763f; font-weight: 600; }
-
-        #registerForm { display: none; }
-
         .terms {
-            font-size: 12px;
-            color: #777;
             margin-top: 15px;
+            text-align: center;
+            font-size: 11px;
+            color: #888;
             line-height: 1.5;
         }
 
-        .terms a { color: #08763f; text-decoration: none; }
+        .terms a {
+            color: #08763f;
+            text-decoration: none;
+        }
 
-        @media (max-width: 850px) {
-            .container { flex-direction: column; }
-            .left-section, .right-section { width: 100%; }
-            .left-section { padding: 45px 35px; }
-            .left-section h1 { font-size: 34px; }
-            .right-section { padding: 40px 35px; }
-            .logo { position: static; margin-bottom: 30px; }
+        /* HIDE REGISTER BY DEFAULT */
+
+        #registerForm {
+            display: none;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+            }
+
+            .left-section {
+                padding: 40px 30px;
+                min-height: 400px;
+            }
+
+            .left-section h1 {
+                font-size: 32px;
+            }
+
+            .logo {
+                left: 30px;
+                top: 25px;
+            }
+
+            .right-section {
+                padding: 40px 30px;
+            }
         }
 
         @media (max-width: 500px) {
-            body { padding: 10px; }
-            .container { border-radius: 18px; }
-            .left-section { padding: 35px 25px; }
-            .left-section p { font-size: 15px; }
-            .features { margin-top: 20px; }
-            .right-section { padding: 35px 25px; }
+
+            .left-section {
+                min-height: 350px;
+            }
+
+            .left-section h1 {
+                font-size: 28px;
+            }
+
+            .left-section p {
+                font-size: 14px;
+            }
+
+            .right-section {
+                padding: 30px 22px;
+            }
+
+            .welcome h2 {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="left-section">
-        <div class="logo">🌱 JeevanPath <span>AI</span></div>
+        <!-- ================= LEFT SECTION ================= -->
 
-        <h1>Find Your Path.<br><span>Build Your Future.</span></h1>
+        <div class="left-section">
 
-        <p>
-            Your AI-powered livelihood assistant that helps
-            you discover the right skills, training and
-            career opportunities based on your goals.
-        </p>
+            <div class="logo">
+                🌱 <span data-i18n="appName">JeevanPath AI</span>
+            </div>
 
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🎤</div>
-                <span>Voice-first and easy to use</span>
+            <h1>
+                <span data-i18n="findPath">
+                    Find Your Path. Build Your Future.
+                </span>
+            </h1>
+
+            <p data-i18n="description">
+                Your AI-powered livelihood assistant that helps you
+                discover the right skills, training and career
+                opportunities based on your goals.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <div class="feature-icon">🎤</div>
+                    <span data-i18n="voiceFirst">
+                        Voice-first and easy to use
+                    </span>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <span data-i18n="aiSkillAssessment">
+                        AI-powered skill assessment
+                    </span>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <span data-i18n="personalizedTraining">
+                        Personalized training recommendations
+                    </span>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🛣️</div>
+                    <span data-i18n="personalizedRoadmap">
+                        Personalized livelihood roadmap
+                    </span>
+                </div>
+
             </div>
-            <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <span>AI-powered skill assessment</span>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎯</div>
-                <span>Personalized training recommendations</span>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🛣️</div>
-                <span>Personalized livelihood roadmap</span>
-            </div>
+
         </div>
+
+
+        <!-- ================= RIGHT SECTION ================= -->
+
+        <div class="right-section">
+
+            <div class="welcome">
+
+                <h2 id="formTitle">
+                    Welcome Back 👋
+                </h2>
+
+                <p id="formSubtitle">
+                    Login to continue your livelihood journey
+                </p>
+
+            </div>
+
+
+            <!-- ================= TABS ================= -->
+
+            <div class="tabs">
+
+                <button
+                    class="tab active"
+                    id="loginTab"
+                    onclick="showLogin()"
+                    data-i18n="login">
+                    Login
+                </button>
+
+                <button
+                    class="tab"
+                    id="registerTab"
+                    onclick="showRegister()"
+                    data-i18n="createAccount">
+                    Create Account
+                </button>
+
+            </div>
+
+
+            <!-- ================= LOGIN FORM ================= -->
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label data-i18n="mobileNumber">
+                        Mobile Number
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="tel"
+                            id="mobileNumber"
+                            maxlength="10"
+                            required
+                            data-i18n-placeholder="enterMobile"
+                            placeholder="Enter 10-digit mobile number">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label data-i18n="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            required
+                            data-i18n-placeholder="enterPassword"
+                            placeholder="Enter your password">
+
+                        <span
+                            class="eye"
+                            onclick="togglePassword('loginPassword')">
+                            👁
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="forgot">
+
+                    <a href="#">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <button
+                    class="submit-btn"
+                    type="submit"
+                    data-i18n="loginButton">
+                    Login →
+                </button>
+
+
+                <div class="voice-text">
+                    🎤
+                    <span data-i18n="voiceFirst">
+                        Voice assistance available
+                    </span>
+                </div>
+
+            </form>
+
+
+            <!-- ================= REGISTER FORM ================= -->
+
+            <form id="registerForm">
+
+                <div class="form-group">
+
+                    <label data-i18n="fullName">
+                        Full Name
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="text"
+                            id="regFullName"
+                            required
+                            data-i18n-placeholder="enterFullName"
+                            placeholder="Enter your full name">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label data-i18n="mobileNumber">
+                        Mobile Number
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="tel"
+                            id="regMobileNumber"
+                            maxlength="10"
+                            required
+                            data-i18n-placeholder="enterMobile"
+                            placeholder="Enter 10-digit mobile number">
+
+                    </div>
+
+                </div>
+
+
+                <!-- PREFERRED LANGUAGE -->
+
+                <div class="form-group">
+
+                    <label data-i18n="preferredLanguage">
+                        Preferred Language
+                    </label>
+
+                    <div class="input-box">
+
+                        <select id="regLanguage" required>
+
+                            <option
+                                value=""
+                                data-i18n="selectLanguage">
+                                Select language
+                            </option>
+
+                            <option value="Hindi">
+                                Hindi
+                            </option>
+
+                            <option value="Marathi">
+                                Marathi
+                            </option>
+
+                            <option value="English">
+                                English
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label data-i18n="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <input
+                            type="password"
+                            id="regPassword"
+                            required
+                            data-i18n-placeholder="enterPassword"
+                            placeholder="Enter your password">
+
+                        <span
+                            class="eye"
+                            onclick="togglePassword('regPassword')">
+                            👁
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="submit-btn"
+                    type="submit"
+                    data-i18n="createAccountButton">
+                    Create Account →
+                </button>
+
+
+                <div class="terms" data-i18n="terms">
+                    By continuing, you agree to our Terms and Privacy Policy.
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
 
-    <div class="right-section">
 
-        <div class="welcome">
-            <h2 id="formTitle">Welcome Back 👋</h2>
-            <p id="formSubtitle">Login to continue your livelihood journey</p>
-        </div>
+    <!-- =====================================================
+         JAVASCRIPT
+         IMPORTANT ORDER:
+         i18n.js → api.js → page logic
+         ===================================================== -->
 
-        <div class="tabs">
-            <button class="tab active" id="loginTab" onclick="showLogin()">Login</button>
-            <button class="tab" id="registerTab" onclick="showRegister()">Create Account</button>
-        </div>
+    <script src="js/i18n.js"></script>
+    <script src="js/api.js"></script>
 
-        <form id="loginForm">
 
-            <div class="form-group">
-                <label>Mobile Number</label>
-                <div class="input-box">
-                    <input type="tel" id="mobileNumber" placeholder="Enter your mobile number" maxlength="10" required>
-                </div>
-            </div>
+    <script>
 
-            <div class="form-group">
-                <label>Password</label>
-                <div class="input-box">
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                    <span class="eye" onclick="togglePassword('loginPassword')">👁</span>
-                </div>
-            </div>
+        /* ==========================================
+           LOGIN / REGISTER SWITCHING
+           ========================================== */
 
-            <div class="forgot"><a href="#">Forgot Password?</a></div>
+        function showLogin() {
 
-            <button class="submit-btn" type="submit">Login →</button>
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registerForm").style.display = "none";
 
-            <div class="voice-text">🎤 <span>Voice assistance available</span></div>
+            document.getElementById("loginTab").classList.add("active");
+            document.getElementById("registerTab").classList.remove("active");
 
-        </form>
+            document.getElementById("formTitle").innerText =
+                t("welcome") + " 👋";
 
-        <form id="registerForm">
+            document.getElementById("formSubtitle").innerText =
+                getLanguage() === "English"
+                    ? "Login to continue your livelihood journey"
+                    : getLanguage() === "Hindi"
+                        ? "अपनी आजीविका यात्रा जारी रखने के लिए लॉगिन करें"
+                        : "तुमचा उपजीविका प्रवास सुरू ठेवण्यासाठी लॉगिन करा";
+        }
 
-            <div class="form-group">
-                <label>Full Name</label>
-                <div class="input-box">
-                    <input type="text" id="regFullName" placeholder="Enter your full name" required>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label>Mobile Number</label>
-                <div class="input-box">
-                    <input type="tel" id="regMobileNumber" placeholder="Enter 10-digit mobile number" maxlength="10" required>
-                </div>
-            </div>
+        function showRegister() {
 
-            <div class="form-group">
-                <label>Preferred Language</label>
-                <div class="input-box">
-                    <select id="regLanguage" required>
-                        <option value="">Select language</option>
-                        <option value="Hindi">Hindi</option>
-                        <option value="Marathi">Marathi</option>
-                        <option value="English">English</option>
-                    </select>
-                </div>
-            </div>
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
 
-            <div class="form-group">
-                <label>Password</label>
-                <div class="input-box">
-                    <input type="password" id="regPassword" placeholder="Create a password" required>
-                    <span class="eye" onclick="togglePassword('regPassword')">👁</span>
-                </div>
-            </div>
+            document.getElementById("loginTab").classList.remove("active");
+            document.getElementById("registerTab").classList.add("active");
 
-            <button class="submit-btn" type="submit">Create Account →</button>
+            document.getElementById("formTitle").innerText =
+                t("createAccount");
 
-            <div class="terms">
-                By creating an account, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
-            </div>
+            document.getElementById("formSubtitle").innerText =
+                getLanguage() === "English"
+                    ? "Create an account to begin your livelihood journey"
+                    : getLanguage() === "Hindi"
+                        ? "अपनी आजीविका यात्रा शुरू करने के लिए खाता बनाएं"
+                        : "तुमचा उपजीविका प्रवास सुरू करण्यासाठी खाते तयार करा";
+        }
 
-        </form>
 
-    </div>
+        /* ==========================================
+           PASSWORD VISIBILITY
+           ========================================== */
 
-</div>
+        function togglePassword(id) {
 
-<script>
-    function showLogin() {
-        document.getElementById("loginForm").style.display = "block";
-        document.getElementById("registerForm").style.display = "none";
-        document.getElementById("loginTab").classList.add("active");
-        document.getElementById("registerTab").classList.remove("active");
-        document.getElementById("formTitle").innerText = "Welcome Back 👋";
-        document.getElementById("formSubtitle").innerText = "Login to continue your livelihood journey";
-    }
+            const input = document.getElementById(id);
 
-    function showRegister() {
-        document.getElementById("loginForm").style.display = "none";
-        document.getElementById("registerForm").style.display = "block";
-        document.getElementById("registerTab").classList.add("active");
-        document.getElementById("loginTab").classList.remove("active");
-        document.getElementById("formTitle").innerText = "Create Account 🌱";
-        document.getElementById("formSubtitle").innerText = "Start your livelihood journey today";
-    }
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
 
-    function togglePassword(fieldId) {
-        const field = document.getElementById(fieldId);
-        field.type = field.type === "password" ? "text" : "password";
-    }
-</script>
 
-<script src="js/api.js"></script>
+        /* ==========================================
+           INITIAL TRANSLATION
+           ========================================== */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            applyTranslations();
+
+            showLogin();
+
+        });
+
+    </script>
 
 </body>
 </html>

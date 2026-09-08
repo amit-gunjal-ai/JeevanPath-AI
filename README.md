@@ -28,3 +28,9 @@ Voice Input
 ## Current Status
 
 Project setup in progress.
+
+## Setup
+1. `python -m venv venv` then activate it
+2. `pip install -r requirements.txt`
+3. Install ffmpeg separately (required for voice/Whisper): `winget install ffmpeg` (Windows) — required for speech-to-text to work
+4. Copy `.env.example` to `backend/.env` and fill in your own DB credentials + API keys (never commit `.env`)

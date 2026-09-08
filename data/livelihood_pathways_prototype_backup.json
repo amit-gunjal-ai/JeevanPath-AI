@@ -1,0 +1,58 @@
+[
+  {
+    "id": "LP001",
+    "name": "Agricultural Equipment Technician",
+    "category": "Agriculture and Allied Services",
+    "description": "A technician responsible for maintaining and repairing agricultural machinery and equipment.",
+    "eligibility": {
+      "minimum_education": 10,
+      "age_requirement": null
+    },
+    "employment": {
+      "types": [
+        "wage_employment",
+        "self_employment"
+      ],
+      "work_environment": [
+        "workshop",
+        "agriculture",
+        "field"
+      ]
+    },
+    "skills": {
+      "required": [
+        "basic mechanics",
+        "machine maintenance",
+        "equipment repair"
+      ],
+      "preferred": [
+        "problem solving",
+        "technical troubleshooting"
+      ]
+    },
+    "interests": [
+      "machines",
+      "agriculture",
+      "repair",
+      "technology"
+    ],
+    "constraints": {
+      "mobility": "local_or_regional"
+    },
+    "training": {
+      "recommended_topics": [
+        "agricultural machinery maintenance",
+        "equipment repair",
+        "basic mechanical systems"
+      ]
+    },
+    "keywords": [
+      "tractor",
+      "machine",
+      "farming equipment",
+      "repair"
+    ],
+    "source": "curated_prototype",
+    "verified": false
+  }
+]
