@@ -1,4 +1,9 @@
 import os
+
+# Keep CPU memory usage lower on small cloud instances
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+
 import sys
 import json
 import hashlib
