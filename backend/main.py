@@ -26,8 +26,9 @@ app = FastAPI(title="SIH PS#97 Livelihood Navigator API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://amit-gunjal-ai.github.io",
     ],
     allow_credentials=True,
     allow_methods=["*"],
